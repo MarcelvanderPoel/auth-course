@@ -61,13 +61,13 @@ public class UserController {
 
 		if(createUserRequest.getPassword().length() < 7 ||
 				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
-			log.info("Password for /api/user/create wrong. Password is {}, confirmed password is {}.", createUserRequest.getPassword(), createUserRequest.getConfirmPassword());
+			log.info("#api /api/user/create #response_code 400 #description Password is {}, confirmed password is {}.", createUserRequest.getPassword(), createUserRequest.getConfirmPassword());
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 
 		userRepository.save(user);
-		log.info("User {} succesfully saved.", createUserRequest.getUsername());
+		log.info("#api /api/user/create #response_code 200 #description User {} succesfully saved.", createUserRequest.getUsername());
 		return ResponseEntity.ok(user);
 	}
 	

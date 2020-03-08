@@ -37,11 +37,11 @@ public class OrderController {
 		log.info("/api/order/submit/{} called.", username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			log.info("/api/order/submit/{} called. User not found.", username);
+			log.info("#api /api/order/submit #response_code 404 #description /api/order/submit/{} called. User not found.", username);
 			return ResponseEntity.notFound().build();
 		}
 		UserOrder order = UserOrder.createFromCart(user.getCart());
-		log.info("/api/order/submit/{} called. Order saved.", username);
+		log.info("#api /api/order/submit #response_code 200 #description /api/order/submit/{} called. Order saved.", username);
 		orderRepository.save(order);
 		return ResponseEntity.ok(order);
 	}
@@ -51,8 +51,10 @@ public class OrderController {
 		log.info("/api/order/history/{} called.", username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
+			log.info("#api /api/order/history #response_code 404 #description /api/order/history/{} called. User not found.", username);
 			return ResponseEntity.notFound().build();
 		}
+		log.info("#api /api/order/history #response_code 200 #description /api/order/history/{} called. Order saved.", username);
 		return ResponseEntity.ok(orderRepository.findByUser(user));
 	}
 }
