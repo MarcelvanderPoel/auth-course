@@ -21,7 +21,7 @@ import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
 
-// test remark to trigger build after commit
+// test remark to trigger build
 
 @RestController
 @RequestMapping("/api/user")
